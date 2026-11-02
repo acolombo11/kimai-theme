@@ -192,6 +192,13 @@ body {
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--sc-ring) 15%, transparent);
 }
 
+/* In dark mode the checked track is the (light) primary color, and Tabler keeps the thumb white,
+   so they merge. Make the thumb dark there, including while focused. */
+:root[data-bs-theme="dark"] .form-switch .form-check-input:checked,
+:root[data-bs-theme="dark"] .form-switch .form-check-input:checked:focus {
+    --tblr-form-switch-bg: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%2318181b'/%3E%3C/svg%3E");
+}
+
 .form-label {
     font-weight: 500;
     font-size: .8125rem;
@@ -264,6 +271,16 @@ body {
 .navbar-vertical .dropdown-toggle[aria-expanded="true"]::after,
 .navbar-vertical .dropdown-toggle.show::after {
     transform: rotate(135deg);
+}
+
+.navbar-vertical .dropdown-toggle::after {
+    transition: transform 0.2s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar-vertical .dropdown-toggle::after {
+        transition: none;
+    }
 }
 
 .navbar-vertical .nav-link {
