@@ -259,6 +259,13 @@ body {
     box-shadow: none !important;
 }
 
+/* Tabler's .dropdown-toggle caret always points down, in the sidebar too. Flip it while the
+   item is expanded (Bootstrap sets aria-expanded and .show on the toggle). */
+.navbar-vertical .dropdown-toggle[aria-expanded="true"]::after,
+.navbar-vertical .dropdown-toggle.show::after {
+    transform: rotate(135deg);
+}
+
 .navbar-vertical .nav-link {
     border-radius: var(--tblr-border-radius);
     color: var(--sc-muted-fg);

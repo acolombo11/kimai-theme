@@ -42,7 +42,7 @@ ${[...Object.keys(map)].map((fa) => `.fa-${fa}::before`).join(",\n")} {
     line-height: 1;
     /* Lucide's glyphs sit high in the em box next to Font Awesome's (and next to text); nudge them down. */
     position: relative;
-    top: 0.1em;
+    top: 0.16em;
 }
 
 ${rules.join("\n")}
