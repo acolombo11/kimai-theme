@@ -623,13 +623,13 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-print::before { content: "\e141"; }
 .fa-file::before { content: "\e0c0"; }
 .fa-file-alt::before,
-.fa-file-contract::before,
 .fa-file-invoice::before,
-.fa-file-lines::before,
-.fa-file-pdf::before { content: "\e0cc"; }
+.fa-file-lines::before { content: "\e0cc"; }
+.fa-file-contract::before,
+.fa-file-invoice-dollar::before { content: "\e5ac"; }
 .fa-file-excel::before { content: "\e326"; }
 .fa-file-import::before { content: "\e0c5"; }
-.fa-file-invoice-dollar::before { content: "\e5ac"; }
+.fa-file-pdf::before { content: "\e329"; }
 .fa-file-signature::before { content: "\e320"; }
 .fa-filter::before { content: "\e0dc"; }
 .fa-floppy-disk::before,
