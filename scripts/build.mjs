@@ -40,6 +40,9 @@ ${[...Object.keys(map)].map((fa) => `.fa-${fa}::before`).join(",\n")} {
     font-weight: 400 !important;
     font-style: normal;
     line-height: 1;
+    /* Lucide's glyphs sit high in the em box next to Font Awesome's (and next to text); nudge them down. */
+    position: relative;
+    top: 0.1em;
 }
 
 ${rules.join("\n")}
