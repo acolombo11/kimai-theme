@@ -337,13 +337,13 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-angle-double-left::before,
 .fa-angle-double-right::before,
 .fa-angle-down::before,
-.fa-angle-up::before,
 .fa-angle-left::before,
 .fa-angle-right::before,
+.fa-angle-up::before,
 .fa-arrow-down::before,
-.fa-arrow-up::before,
 .fa-arrow-left::before,
 .fa-arrow-right::before,
+.fa-arrow-up::before,
 .fa-balance-scale::before,
 .fa-ban::before,
 .fa-barcode::before,
@@ -355,15 +355,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-bookmark::before,
 .fa-briefcase::before,
 .fa-building::before,
+.fa-building-columns::before,
 .fa-calculator::before,
 .fa-calendar::before,
 .fa-calendar-alt::before,
 .fa-calendar-check::before,
 .fa-calendar-day::before,
 .fa-caret-down::before,
-.fa-caret-up::before,
 .fa-caret-left::before,
 .fa-caret-right::before,
+.fa-caret-up::before,
 .fa-chart-bar::before,
 .fa-chart-line::before,
 .fa-chart-pie::before,
@@ -378,22 +379,29 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-circle-notch::before,
 .fa-clock::before,
 .fa-close::before,
+.fa-cloud-arrow-down::before,
+.fa-cloud-arrow-up::before,
+.fa-cloud-download-alt::before,
+.fa-cloud-upload-alt::before,
 .fa-code::before,
 .fa-cog::before,
 .fa-cogs::before,
-.fa-gear::before,
 .fa-coins::before,
 .fa-comment::before,
 .fa-copy::before,
 .fa-couch::before,
+.fa-credit-card::before,
+.fa-css3::before,
 .fa-database::before,
+.fa-dollar-sign::before,
 .fa-download::before,
 .fa-edit::before,
-.fa-pen-to-square::before,
 .fa-ellipsis::before,
 .fa-ellipsis-h::before,
 .fa-ellipsis-v::before,
 .fa-envelope::before,
+.fa-envelope-open-text::before,
+.fa-euro-sign::before,
 .fa-exclamation::before,
 .fa-exclamation-circle::before,
 .fa-exclamation-triangle::before,
@@ -403,46 +411,62 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-fax::before,
 .fa-file::before,
 .fa-file-alt::before,
-.fa-file-lines::before,
 .fa-file-contract::before,
 .fa-file-excel::before,
 .fa-file-import::before,
+.fa-file-invoice::before,
+.fa-file-invoice-dollar::before,
+.fa-file-lines::before,
 .fa-file-pdf::before,
 .fa-file-signature::before,
 .fa-filter::before,
+.fa-floppy-disk::before,
 .fa-folder::before,
 .fa-folder-minus::before,
 .fa-folder-open::before,
 .fa-folder-plus::before,
+.fa-gear::before,
 .fa-github::before,
 .fa-globe::before,
+.fa-hand-holding-dollar::before,
 .fa-hand-holding-heart::before,
+.fa-hand-holding-usd::before,
+.fa-handshake::before,
 .fa-history::before,
 .fa-home::before,
-.fa-house::before,
 .fa-hourglass-end::before,
 .fa-hourglass-half::before,
+.fa-house::before,
 .fa-id-card::before,
 .fa-image::before,
 .fa-info::before,
 .fa-info-circle::before,
 .fa-key::before,
+.fa-landmark::before,
 .fa-language::before,
 .fa-layer-group::before,
 .fa-link::before,
 .fa-list::before,
 .fa-lock::before,
 .fa-long-arrow-alt-left::before,
+.fa-magnifying-glass::before,
 .fa-medkit::before,
 .fa-minus::before,
 .fa-minus-circle::before,
 .fa-mobile::before,
+.fa-money-bill::before,
+.fa-money-bill-1::before,
+.fa-money-bill-wave::before,
 .fa-palette::before,
 .fa-paper-plane::before,
 .fa-paperclip::before,
 .fa-pause::before,
 .fa-pause-circle::before,
+.fa-pen-to-square::before,
+.fa-percent::before,
+.fa-percentage::before,
 .fa-phone::before,
+.fa-piggy-bank::before,
 .fa-play::before,
 .fa-play-circle::before,
 .fa-plug::before,
@@ -452,12 +476,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-print::before,
 .fa-question::before,
 .fa-question-circle::before,
+.fa-receipt::before,
 .fa-repeat::before,
 .fa-rocket::before,
 .fa-save::before,
-.fa-floppy-disk::before,
 .fa-search::before,
-.fa-magnifying-glass::before,
 .fa-shopping-cart::before,
 .fa-sign-in-alt::before,
 .fa-sign-out-alt::before,
@@ -478,7 +501,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-thumbtack::before,
 .fa-times::before,
 .fa-times-circle::before,
-.fa-xmark::before,
 .fa-toggle-off::before,
 .fa-toggle-on::before,
 .fa-toolbox::before,
@@ -487,6 +509,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-trash-can::before,
 .fa-umbrella-beach::before,
 .fa-undo::before,
+.fa-university::before,
 .fa-unlock-alt::before,
 .fa-upload::before,
 .fa-user::before,
@@ -501,7 +524,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-user-tie::before,
 .fa-users::before,
 .fa-utensils::before,
-.fa-wrench::before {
+.fa-wallet::before,
+.fa-wrench::before,
+.fa-xmark::before {
     font-family: "lucide" !important;
     font-weight: 400 !important;
     font-style: normal;
@@ -513,22 +538,22 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-angle-down::before,
 .fa-caret-down::before,
 .fa-chevron-down::before { content: "\e06d"; }
-.fa-angle-up::before,
-.fa-caret-up::before,
-.fa-chevron-up::before { content: "\e070"; }
 .fa-angle-left::before,
 .fa-caret-left::before,
 .fa-chevron-left::before { content: "\e06e"; }
 .fa-angle-right::before,
 .fa-caret-right::before,
 .fa-chevron-right::before { content: "\e06f"; }
+.fa-angle-up::before,
+.fa-caret-up::before,
+.fa-chevron-up::before { content: "\e070"; }
 .fa-arrow-down::before,
 .fa-sort-down::before { content: "\e042"; }
-.fa-arrow-up::before,
-.fa-sort-up::before { content: "\e04a"; }
 .fa-arrow-left::before,
 .fa-long-arrow-alt-left::before { content: "\e048"; }
 .fa-arrow-right::before { content: "\e049"; }
+.fa-arrow-up::before,
+.fa-sort-up::before { content: "\e04a"; }
 .fa-balance-scale::before { content: "\e212"; }
 .fa-ban::before { content: "\e051"; }
 .fa-barcode::before { content: "\e533"; }
@@ -540,6 +565,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-bookmark::before { content: "\e060"; }
 .fa-briefcase::before { content: "\e062"; }
 .fa-building::before { content: "\e290"; }
+.fa-building-columns::before,
+.fa-landmark::before,
+.fa-university::before { content: "\e23a"; }
 .fa-calculator::before { content: "\e1bc"; }
 .fa-calendar::before,
 .fa-calendar-alt::before { content: "\e063"; }
@@ -557,6 +585,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-close::before,
 .fa-times::before,
 .fa-xmark::before { content: "\e1b2"; }
+.fa-cloud-arrow-down::before,
+.fa-cloud-download-alt::before { content: "\e089"; }
+.fa-cloud-arrow-up::before,
+.fa-cloud-upload-alt::before { content: "\e091"; }
 .fa-code::before { content: "\e093"; }
 .fa-cog::before,
 .fa-cogs::before,
@@ -565,7 +597,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-comment::before { content: "\e117"; }
 .fa-copy::before { content: "\e09e"; }
 .fa-couch::before { content: "\e2c4"; }
+.fa-credit-card::before { content: "\e0aa"; }
+.fa-css3::before { content: "\e2e7"; }
 .fa-database::before { content: "\e0ad"; }
+.fa-dollar-sign::before { content: "\e0b1"; }
 .fa-download::before { content: "\e0b2"; }
 .fa-edit::before,
 .fa-pen-to-square::before { content: "\e172"; }
@@ -573,6 +608,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-ellipsis-h::before { content: "\e0b6"; }
 .fa-ellipsis-v::before { content: "\e0b7"; }
 .fa-envelope::before { content: "\e10f"; }
+.fa-envelope-open-text::before { content: "\e363"; }
+.fa-euro-sign::before { content: "\e0b8"; }
 .fa-exclamation::before,
 .fa-exclamation-circle::before { content: "\e077"; }
 .fa-exclamation-triangle::before { content: "\e193"; }
@@ -583,20 +620,27 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-print::before { content: "\e141"; }
 .fa-file::before { content: "\e0c0"; }
 .fa-file-alt::before,
-.fa-file-lines::before,
 .fa-file-contract::before,
+.fa-file-invoice::before,
+.fa-file-lines::before,
 .fa-file-pdf::before { content: "\e0cc"; }
 .fa-file-excel::before { content: "\e326"; }
 .fa-file-import::before { content: "\e0c5"; }
+.fa-file-invoice-dollar::before { content: "\e5ac"; }
 .fa-file-signature::before { content: "\e320"; }
 .fa-filter::before { content: "\e0dc"; }
+.fa-floppy-disk::before,
+.fa-save::before { content: "\e14d"; }
 .fa-folder::before { content: "\e0d7"; }
 .fa-folder-minus::before { content: "\e0d8"; }
 .fa-folder-open::before { content: "\e247"; }
 .fa-folder-plus::before { content: "\e0d9"; }
 .fa-github::before { content: "\e0e6"; }
 .fa-globe::before { content: "\e0e8"; }
+.fa-hand-holding-dollar::before,
+.fa-hand-holding-usd::before { content: "\e5b8"; }
 .fa-hand-holding-heart::before { content: "\e5b9"; }
+.fa-handshake::before { content: "\e5c0"; }
 .fa-history::before { content: "\e1f5"; }
 .fa-home::before,
 .fa-house::before { content: "\e0f5"; }
@@ -612,16 +656,24 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-link::before { content: "\e102"; }
 .fa-list::before { content: "\e106"; }
 .fa-lock::before { content: "\e10b"; }
+.fa-magnifying-glass::before,
+.fa-search::before { content: "\e151"; }
 .fa-medkit::before { content: "\e5d6"; }
 .fa-minus::before { content: "\e11c"; }
 .fa-minus-circle::before { content: "\e07e"; }
 .fa-mobile::before { content: "\e163"; }
+.fa-money-bill::before,
+.fa-money-bill-1::before,
+.fa-money-bill-wave::before { content: "\e052"; }
 .fa-palette::before { content: "\e1dd"; }
 .fa-paper-plane::before { content: "\e152"; }
 .fa-paperclip::before { content: "\e12d"; }
 .fa-pause::before { content: "\e12e"; }
 .fa-pause-circle::before { content: "\e07f"; }
+.fa-percent::before,
+.fa-percentage::before { content: "\e132"; }
 .fa-phone::before { content: "\e133"; }
+.fa-piggy-bank::before { content: "\e13a"; }
 .fa-play::before { content: "\e13c"; }
 .fa-play-circle::before { content: "\e080"; }
 .fa-plug::before { content: "\e37f"; }
@@ -630,12 +682,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-prescription-bottle-medical::before { content: "\e5ea"; }
 .fa-question::before,
 .fa-question-circle::before { content: "\e082"; }
+.fa-receipt::before { content: "\e3d3"; }
 .fa-repeat::before { content: "\e146"; }
 .fa-rocket::before { content: "\e286"; }
-.fa-save::before,
-.fa-floppy-disk::before { content: "\e14d"; }
-.fa-search::before,
-.fa-magnifying-glass::before { content: "\e151"; }
 .fa-shopping-cart::before { content: "\e15c"; }
 .fa-sign-in-alt::before { content: "\e10d"; }
 .fa-sign-out-alt::before { content: "\e10e"; }
@@ -675,4 +724,5 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .fa-user-plus::before { content: "\e1a2"; }
 .fa-user-shield::before { content: "\e647"; }
 .fa-utensils::before { content: "\e2f6"; }
+.fa-wallet::before { content: "\e204"; }
 .fa-wrench::before { content: "\e1b1"; }
