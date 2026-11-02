@@ -1,0 +1,8 @@
+{
+  "name": "kimai-theme",
+  "private": true,
+  "version": "1.0.0",
+  "description": "shadcn/ui-style reskin and Lucide icons for Kimai, shipped as a Custom CSS plugin stylesheet",
+  "scripts": { "build": "node scripts/build.mjs" },
+  "devDependencies": { "lucide-static": "1.66.0" }
+}

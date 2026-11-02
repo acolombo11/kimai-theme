@@ -1,0 +1,678 @@
+/*
+ * shadcn/ui-style reskin for Kimai (Tabler-based UI), light + dark.
+ *
+ * Loaded via Kimai's own CustomCSSBundle mechanism (KimaiPlugin\CustomCSSBundle\EventSubscriber\
+ * ThemeEventSubscriber), which injects this file's content as an inline <style> tag in every
+ * page's <head>, AFTER Tabler's own compiled stylesheet - so normal cascade order already favors
+ * these rules without needing !important almost anywhere.
+ *
+ * Approach: Tabler (Bootstrap 5.3+) exposes its whole design system as --tblr-* CSS custom
+ * properties, so most of this reskin is just re-pointing those variables at shadcn/ui's default
+ * "zinc" theme tokens (radius 0.5rem, near-black/near-white primary, border-first instead of
+ * shadow-first surfaces) rather than fighting individual component rules.
+ *
+ * Dark mode: Kimai toggles Bootstrap's native `data-bs-theme="dark"` attribute on <html>
+ * (see templates/partials/head.html.twig - auto-set from prefers-color-scheme, also user-
+ * togglable in profile settings). All colors here are defined once as --sc-* semantic variables
+ * under :root (light) and :root[data-bs-theme="dark"] (dark, wins on specificity), and every
+ * component rule below reads var(--sc-*) instead of a literal hex value - so nothing needs to be
+ * duplicated per-theme beyond the two variable blocks.
+ *
+ * Font: real Inter (shadcn's usual default), self-hosted as woff2 under /fonts/inter/ (see the
+ * README for the mount) - no Google Fonts call at runtime.
+ *
+ * Also hides two dashboard widgets (.ticktac, .recent-activities).
+ */
+.ticktac, .recent-activities { display: none !important; }
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("/fonts/inter/Inter-Bold.woff2") format("woff2");
+}
+
+/* ---------- Design tokens: shadcn/ui "zinc" theme ---------- */
+
+:root {
+    /* semantic tokens (light) */
+    --sc-bg: #ffffff;
+    --sc-fg: #09090b;              /* zinc-950 */
+    --sc-card: #ffffff;
+    --sc-card-fg: #09090b;
+    --sc-border: #e4e4e7;          /* zinc-200 */
+    --sc-muted: #f4f4f5;           /* zinc-100 */
+    --sc-muted-fg: #71717a;        /* zinc-500 */
+    --sc-accent: #f4f4f5;          /* hover/active surface */
+    --sc-primary: #18181b;         /* zinc-900 */
+    --sc-primary-fg: #fafafa;
+    --sc-ring: #18181b;
+    --sc-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+
+    /* map onto Tabler's own variables so components that already read them adapt for free */
+    --tblr-font-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --tblr-body-font-family: var(--tblr-font-sans-serif);
+    --tblr-btn-font-family: var(--tblr-font-sans-serif);
+
+    --tblr-body-bg: var(--sc-bg);
+    --tblr-body-color: var(--sc-fg);
+
+    --tblr-border-color: var(--sc-border);
+    --tblr-border-radius: 0.5rem;
+    --tblr-border-radius-sm: 0.375rem;
+    --tblr-border-radius-md: 0.5rem;
+    --tblr-border-radius-lg: 0.75rem;
+    --tblr-border-radius-xl: 0.875rem;
+    --tblr-border-radius-pill: 9999px;
+
+    --tblr-box-shadow: none;
+    --tblr-box-shadow-sm: none;
+    --tblr-box-shadow-lg: var(--sc-shadow-lg);
+    --tblr-box-shadow-input: none;
+
+    --tblr-link-color: var(--sc-fg);
+    --tblr-link-hover-color: var(--sc-muted-fg);
+
+    --tblr-primary: var(--sc-primary);
+    --tblr-primary-fg: var(--sc-primary-fg);
+    --tblr-primary-lt: var(--sc-muted);
+    --tblr-primary-darken: var(--sc-fg);
+
+    --tblr-active-bg: var(--sc-accent);
+}
+
+:root[data-bs-theme="dark"] {
+    /* semantic tokens (dark) */
+    --sc-bg: #09090b;              /* zinc-950 */
+    --sc-fg: #fafafa;
+    --sc-card: #09090b;
+    --sc-card-fg: #fafafa;
+    --sc-border: #27272a;          /* zinc-800 */
+    --sc-muted: #27272a;
+    --sc-muted-fg: #a1a1aa;        /* zinc-400 */
+    --sc-accent: #27272a;
+    --sc-primary: #fafafa;         /* inverted: light primary button on dark bg */
+    --sc-primary-fg: #18181b;
+    --sc-ring: #d4d4d8;
+    --sc-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+
+    --tblr-body-bg: var(--sc-bg);
+    --tblr-body-color: var(--sc-fg);
+    --tblr-border-color: var(--sc-border);
+    --tblr-box-shadow-lg: var(--sc-shadow-lg);
+    --tblr-link-color: var(--sc-fg);
+    --tblr-link-hover-color: var(--sc-muted-fg);
+    --tblr-primary: var(--sc-primary);
+    --tblr-primary-fg: var(--sc-primary-fg);
+    --tblr-primary-lt: var(--sc-muted);
+    --tblr-primary-darken: var(--sc-fg);
+    --tblr-active-bg: var(--sc-accent);
+}
+
+/* ---------- Typography ---------- */
+
+body {
+    font-family: var(--tblr-font-sans-serif);
+    -webkit-font-smoothing: antialiased;
+}
+
+.page-title, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    border-radius: var(--tblr-border-radius);
+    font-weight: 500;
+    box-shadow: none;
+    border-width: 1px;
+    transition: background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+
+.btn-primary {
+    background-color: var(--sc-primary);
+    border-color: var(--sc-primary);
+    color: var(--sc-primary-fg);
+}
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--sc-primary);
+    border-color: var(--sc-primary);
+    opacity: .88;
+}
+
+.btn-secondary, .btn-outline-secondary, .btn-white, .btn-default {
+    background-color: var(--sc-card);
+    border-color: var(--sc-border);
+    color: var(--sc-fg);
+}
+.btn-secondary:hover, .btn-outline-secondary:hover, .btn-white:hover, .btn-default:hover {
+    background-color: var(--sc-accent);
+}
+
+.btn:focus-visible, .btn.focus {
+    box-shadow: 0 0 0 2px var(--sc-bg), 0 0 0 4px var(--sc-ring);
+}
+
+/* ---------- Forms / inputs ---------- */
+
+.form-control, .form-select, .form-check-input {
+    border-color: var(--sc-border);
+    border-radius: var(--tblr-border-radius);
+    box-shadow: none;
+    background-color: var(--sc-card);
+    color: var(--sc-fg);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--sc-muted-fg);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--sc-ring) 15%, transparent);
+}
+
+.form-label {
+    font-weight: 500;
+    font-size: .8125rem;
+    color: var(--sc-muted-fg);
+}
+
+/* ---------- Cards: border instead of shadow, like shadcn's <Card> ---------- */
+
+.card {
+    background-color: var(--sc-card);
+    color: var(--sc-card-fg);
+    border: 1px solid var(--sc-border);
+    border-radius: var(--tblr-border-radius-lg);
+    box-shadow: none;
+}
+
+.card-header, .card-footer {
+    background-color: transparent;
+    border-color: var(--sc-border);
+}
+
+.card-title {
+    font-weight: 600;
+    color: var(--sc-card-fg);
+}
+
+/* ---------- Tables ---------- */
+
+.table {
+    --tblr-table-border-color: var(--sc-border);
+    --tblr-table-hover-bg: var(--sc-muted);
+    --tblr-table-bg: var(--sc-card);
+    --tblr-table-color: var(--sc-fg);
+}
+
+.table thead th {
+    font-size: .75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--sc-muted-fg);
+    border-bottom-width: 1px;
+}
+
+/* ---------- Badges: flatter, less saturated than stock Tabler ---------- */
+
+.badge {
+    border-radius: var(--tblr-border-radius-sm);
+    font-weight: 500;
+    padding: .25em .55em;
+}
+
+/* ---------- Navbar / sidebar: flat surface with a hairline border ---------- */
+
+.navbar, .navbar-vertical {
+    background-color: var(--sc-card);
+    border-color: var(--sc-border);
+    box-shadow: none;
+}
+
+/* No 1px divider on the sidebar's right edge. Tabler draws it as an inset
+   box-shadow from `.navbar-expand-*.navbar-vertical` (higher specificity than
+   the rule above), so it has to be beaten with !important. */
+.navbar-vertical {
+    box-shadow: none !important;
+}
+
+.navbar-vertical .nav-link {
+    border-radius: var(--tblr-border-radius);
+    color: var(--sc-muted-fg);
+    font-weight: 500;
+}
+
+.navbar-vertical .nav-link.active,
+.navbar-vertical .nav-item.active > .nav-link {
+    background-color: var(--sc-accent);
+    color: var(--sc-fg);
+}
+
+.navbar-vertical .nav-link:hover {
+    background-color: var(--sc-accent);
+}
+
+/* ---------- Dropdowns / modals ---------- */
+
+.dropdown-menu {
+    background-color: var(--sc-card);
+    color: var(--sc-fg);
+    border: 1px solid var(--sc-border);
+    border-radius: var(--tblr-border-radius-lg);
+    box-shadow: var(--sc-shadow-lg);
+}
+
+.dropdown-item {
+    color: var(--sc-fg);
+    border-radius: var(--tblr-border-radius-sm);
+    margin: 1px 4px;
+    width: calc(100% - 8px);
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: var(--sc-accent);
+    color: var(--sc-fg);
+}
+
+.modal-content {
+    background-color: var(--sc-card);
+    color: var(--sc-fg);
+    border: 1px solid var(--sc-border);
+    border-radius: var(--tblr-border-radius-lg);
+    box-shadow: var(--sc-shadow-lg);
+}
+
+.modal-header, .modal-footer {
+    border-color: var(--sc-border);
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    border-radius: var(--tblr-border-radius-lg);
+    border-width: 1px;
+}
+
+/* ---------- Focus ring reset (accessible, matches shadcn's ring style) ---------- */
+
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--sc-bg), 0 0 0 4px var(--sc-ring);
+}
+
+/* ---------- Lucide icons in place of Font Awesome (generated by scripts/build.mjs) ---------- */
+
+@font-face {
+    font-family: "lucide";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/lucide/lucide.woff2") format("woff2");
+}
+
+/* Every mapped class switches font; icons without a mapping keep their Font Awesome glyph. */
+.fa-angle-double-left::before,
+.fa-angle-double-right::before,
+.fa-angle-down::before,
+.fa-angle-up::before,
+.fa-angle-left::before,
+.fa-angle-right::before,
+.fa-arrow-down::before,
+.fa-arrow-up::before,
+.fa-arrow-left::before,
+.fa-arrow-right::before,
+.fa-balance-scale::before,
+.fa-ban::before,
+.fa-barcode::before,
+.fa-bars::before,
+.fa-bell::before,
+.fa-bell-slash::before,
+.fa-bolt::before,
+.fa-book::before,
+.fa-bookmark::before,
+.fa-briefcase::before,
+.fa-building::before,
+.fa-calculator::before,
+.fa-calendar::before,
+.fa-calendar-alt::before,
+.fa-calendar-check::before,
+.fa-calendar-day::before,
+.fa-caret-down::before,
+.fa-caret-up::before,
+.fa-caret-left::before,
+.fa-caret-right::before,
+.fa-chart-bar::before,
+.fa-chart-line::before,
+.fa-chart-pie::before,
+.fa-check::before,
+.fa-check-circle::before,
+.fa-check-square::before,
+.fa-chevron-down::before,
+.fa-chevron-left::before,
+.fa-chevron-right::before,
+.fa-chevron-up::before,
+.fa-circle::before,
+.fa-circle-notch::before,
+.fa-clock::before,
+.fa-close::before,
+.fa-code::before,
+.fa-cog::before,
+.fa-cogs::before,
+.fa-gear::before,
+.fa-coins::before,
+.fa-comment::before,
+.fa-copy::before,
+.fa-couch::before,
+.fa-database::before,
+.fa-download::before,
+.fa-edit::before,
+.fa-pen-to-square::before,
+.fa-ellipsis::before,
+.fa-ellipsis-h::before,
+.fa-ellipsis-v::before,
+.fa-envelope::before,
+.fa-exclamation::before,
+.fa-exclamation-circle::before,
+.fa-exclamation-triangle::before,
+.fa-external-link-alt::before,
+.fa-eye::before,
+.fa-eye-slash::before,
+.fa-fax::before,
+.fa-file::before,
+.fa-file-alt::before,
+.fa-file-lines::before,
+.fa-file-contract::before,
+.fa-file-excel::before,
+.fa-file-import::before,
+.fa-file-pdf::before,
+.fa-file-signature::before,
+.fa-filter::before,
+.fa-folder::before,
+.fa-folder-minus::before,
+.fa-folder-open::before,
+.fa-folder-plus::before,
+.fa-github::before,
+.fa-globe::before,
+.fa-hand-holding-heart::before,
+.fa-history::before,
+.fa-home::before,
+.fa-house::before,
+.fa-hourglass-end::before,
+.fa-hourglass-half::before,
+.fa-id-card::before,
+.fa-image::before,
+.fa-info::before,
+.fa-info-circle::before,
+.fa-key::before,
+.fa-language::before,
+.fa-layer-group::before,
+.fa-link::before,
+.fa-list::before,
+.fa-lock::before,
+.fa-long-arrow-alt-left::before,
+.fa-medkit::before,
+.fa-minus::before,
+.fa-minus-circle::before,
+.fa-mobile::before,
+.fa-palette::before,
+.fa-paper-plane::before,
+.fa-paperclip::before,
+.fa-pause::before,
+.fa-pause-circle::before,
+.fa-phone::before,
+.fa-play::before,
+.fa-play-circle::before,
+.fa-plug::before,
+.fa-plus::before,
+.fa-plus-circle::before,
+.fa-prescription-bottle-medical::before,
+.fa-print::before,
+.fa-question::before,
+.fa-question-circle::before,
+.fa-repeat::before,
+.fa-rocket::before,
+.fa-save::before,
+.fa-floppy-disk::before,
+.fa-search::before,
+.fa-magnifying-glass::before,
+.fa-shopping-cart::before,
+.fa-sign-in-alt::before,
+.fa-sign-out-alt::before,
+.fa-sort::before,
+.fa-sort-down::before,
+.fa-sort-up::before,
+.fa-square::before,
+.fa-star::before,
+.fa-stop::before,
+.fa-stop-circle::before,
+.fa-stopwatch::before,
+.fa-sync::before,
+.fa-table::before,
+.fa-tachometer-alt::before,
+.fa-tags::before,
+.fa-tasks::before,
+.fa-th::before,
+.fa-thumbtack::before,
+.fa-times::before,
+.fa-times-circle::before,
+.fa-xmark::before,
+.fa-toggle-off::before,
+.fa-toggle-on::before,
+.fa-toolbox::before,
+.fa-trash::before,
+.fa-trash-alt::before,
+.fa-trash-can::before,
+.fa-umbrella-beach::before,
+.fa-undo::before,
+.fa-unlock-alt::before,
+.fa-upload::before,
+.fa-user::before,
+.fa-user-check::before,
+.fa-user-circle::before,
+.fa-user-clock::before,
+.fa-user-edit::before,
+.fa-user-friends::before,
+.fa-user-lock::before,
+.fa-user-plus::before,
+.fa-user-shield::before,
+.fa-user-tie::before,
+.fa-users::before,
+.fa-utensils::before,
+.fa-wrench::before {
+    font-family: "lucide" !important;
+    font-weight: 400 !important;
+    font-style: normal;
+    line-height: 1;
+}
+
+.fa-angle-double-left::before { content: "\e072"; }
+.fa-angle-double-right::before { content: "\e073"; }
+.fa-angle-down::before,
+.fa-caret-down::before,
+.fa-chevron-down::before { content: "\e06d"; }
+.fa-angle-up::before,
+.fa-caret-up::before,
+.fa-chevron-up::before { content: "\e070"; }
+.fa-angle-left::before,
+.fa-caret-left::before,
+.fa-chevron-left::before { content: "\e06e"; }
+.fa-angle-right::before,
+.fa-caret-right::before,
+.fa-chevron-right::before { content: "\e06f"; }
+.fa-arrow-down::before,
+.fa-sort-down::before { content: "\e042"; }
+.fa-arrow-up::before,
+.fa-sort-up::before { content: "\e04a"; }
+.fa-arrow-left::before,
+.fa-long-arrow-alt-left::before { content: "\e048"; }
+.fa-arrow-right::before { content: "\e049"; }
+.fa-balance-scale::before { content: "\e212"; }
+.fa-ban::before { content: "\e051"; }
+.fa-barcode::before { content: "\e533"; }
+.fa-bars::before { content: "\e115"; }
+.fa-bell::before { content: "\e059"; }
+.fa-bell-slash::before { content: "\e05a"; }
+.fa-bolt::before { content: "\e1b4"; }
+.fa-book::before { content: "\e05e"; }
+.fa-bookmark::before { content: "\e060"; }
+.fa-briefcase::before { content: "\e062"; }
+.fa-building::before { content: "\e290"; }
+.fa-calculator::before { content: "\e1bc"; }
+.fa-calendar::before,
+.fa-calendar-alt::before { content: "\e063"; }
+.fa-calendar-check::before { content: "\e2b7"; }
+.fa-calendar-day::before { content: "\e630"; }
+.fa-chart-bar::before { content: "\e2a3"; }
+.fa-chart-line::before { content: "\e2a5"; }
+.fa-chart-pie::before { content: "\e06b"; }
+.fa-check::before { content: "\e06c"; }
+.fa-check-circle::before { content: "\e226"; }
+.fa-check-square::before { content: "\e559"; }
+.fa-circle::before { content: "\e076"; }
+.fa-circle-notch::before { content: "\e10a"; }
+.fa-clock::before { content: "\e087"; }
+.fa-close::before,
+.fa-times::before,
+.fa-xmark::before { content: "\e1b2"; }
+.fa-code::before { content: "\e093"; }
+.fa-cog::before,
+.fa-cogs::before,
+.fa-gear::before { content: "\e154"; }
+.fa-coins::before { content: "\e097"; }
+.fa-comment::before { content: "\e117"; }
+.fa-copy::before { content: "\e09e"; }
+.fa-couch::before { content: "\e2c4"; }
+.fa-database::before { content: "\e0ad"; }
+.fa-download::before { content: "\e0b2"; }
+.fa-edit::before,
+.fa-pen-to-square::before { content: "\e172"; }
+.fa-ellipsis::before,
+.fa-ellipsis-h::before { content: "\e0b6"; }
+.fa-ellipsis-v::before { content: "\e0b7"; }
+.fa-envelope::before { content: "\e10f"; }
+.fa-exclamation::before,
+.fa-exclamation-circle::before { content: "\e077"; }
+.fa-exclamation-triangle::before { content: "\e193"; }
+.fa-external-link-alt::before { content: "\e0b9"; }
+.fa-eye::before { content: "\e0ba"; }
+.fa-eye-slash::before { content: "\e0bb"; }
+.fa-fax::before,
+.fa-print::before { content: "\e141"; }
+.fa-file::before { content: "\e0c0"; }
+.fa-file-alt::before,
+.fa-file-lines::before,
+.fa-file-contract::before,
+.fa-file-pdf::before { content: "\e0cc"; }
+.fa-file-excel::before { content: "\e326"; }
+.fa-file-import::before { content: "\e0c5"; }
+.fa-file-signature::before { content: "\e320"; }
+.fa-filter::before { content: "\e0dc"; }
+.fa-folder::before { content: "\e0d7"; }
+.fa-folder-minus::before { content: "\e0d8"; }
+.fa-folder-open::before { content: "\e247"; }
+.fa-folder-plus::before { content: "\e0d9"; }
+.fa-github::before { content: "\e0e6"; }
+.fa-globe::before { content: "\e0e8"; }
+.fa-hand-holding-heart::before { content: "\e5b9"; }
+.fa-history::before { content: "\e1f5"; }
+.fa-home::before,
+.fa-house::before { content: "\e0f5"; }
+.fa-hourglass-end::before,
+.fa-hourglass-half::before { content: "\e296"; }
+.fa-id-card::before { content: "\e617"; }
+.fa-image::before { content: "\e0f6"; }
+.fa-info::before,
+.fa-info-circle::before { content: "\e0f9"; }
+.fa-key::before { content: "\e0fd"; }
+.fa-language::before { content: "\e0fe"; }
+.fa-layer-group::before { content: "\e529"; }
+.fa-link::before { content: "\e102"; }
+.fa-list::before { content: "\e106"; }
+.fa-lock::before { content: "\e10b"; }
+.fa-medkit::before { content: "\e5d6"; }
+.fa-minus::before { content: "\e11c"; }
+.fa-minus-circle::before { content: "\e07e"; }
+.fa-mobile::before { content: "\e163"; }
+.fa-palette::before { content: "\e1dd"; }
+.fa-paper-plane::before { content: "\e152"; }
+.fa-paperclip::before { content: "\e12d"; }
+.fa-pause::before { content: "\e12e"; }
+.fa-pause-circle::before { content: "\e07f"; }
+.fa-phone::before { content: "\e133"; }
+.fa-play::before { content: "\e13c"; }
+.fa-play-circle::before { content: "\e080"; }
+.fa-plug::before { content: "\e37f"; }
+.fa-plus::before { content: "\e13d"; }
+.fa-plus-circle::before { content: "\e081"; }
+.fa-prescription-bottle-medical::before { content: "\e5ea"; }
+.fa-question::before,
+.fa-question-circle::before { content: "\e082"; }
+.fa-repeat::before { content: "\e146"; }
+.fa-rocket::before { content: "\e286"; }
+.fa-save::before,
+.fa-floppy-disk::before { content: "\e14d"; }
+.fa-search::before,
+.fa-magnifying-glass::before { content: "\e151"; }
+.fa-shopping-cart::before { content: "\e15c"; }
+.fa-sign-in-alt::before { content: "\e10d"; }
+.fa-sign-out-alt::before { content: "\e10e"; }
+.fa-sort::before { content: "\e37d"; }
+.fa-square::before,
+.fa-stop::before { content: "\e167"; }
+.fa-star::before { content: "\e176"; }
+.fa-stop-circle::before { content: "\e083"; }
+.fa-stopwatch::before { content: "\e1e0"; }
+.fa-sync::before { content: "\e145"; }
+.fa-table::before { content: "\e17d"; }
+.fa-tachometer-alt::before { content: "\e1bf"; }
+.fa-tags::before { content: "\e35c"; }
+.fa-tasks::before { content: "\e1d0"; }
+.fa-th::before { content: "\e0e9"; }
+.fa-thumbtack::before { content: "\e259"; }
+.fa-times-circle::before { content: "\e084"; }
+.fa-toggle-off::before { content: "\e18b"; }
+.fa-toggle-on::before { content: "\e18c"; }
+.fa-toolbox::before { content: "\e6b0"; }
+.fa-trash::before,
+.fa-trash-alt::before,
+.fa-trash-can::before { content: "\e18e"; }
+.fa-umbrella-beach::before { content: "\e199"; }
+.fa-undo::before { content: "\e2a1"; }
+.fa-unlock-alt::before { content: "\e10c"; }
+.fa-upload::before { content: "\e19e"; }
+.fa-user::before,
+.fa-user-clock::before,
+.fa-user-tie::before { content: "\e19f"; }
+.fa-user-check::before { content: "\e1a0"; }
+.fa-user-circle::before { content: "\e461"; }
+.fa-user-edit::before { content: "\e5fc"; }
+.fa-user-friends::before,
+.fa-users::before { content: "\e1a4"; }
+.fa-user-lock::before { content: "\e660"; }
+.fa-user-plus::before { content: "\e1a2"; }
+.fa-user-shield::before { content: "\e647"; }
+.fa-utensils::before { content: "\e2f6"; }
+.fa-wrench::before { content: "\e1b1"; }
