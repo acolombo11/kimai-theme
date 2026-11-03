@@ -192,6 +192,13 @@ body {
     top: 0;
 }
 
+/* Lucide glyphs fill less of the em box than Font Awesome's, so in small buttons (the search
+   field's submit button, table row actions) they look tiny. Scale them up a little. */
+.btn-sm [class*="fa-"]::before,
+.btn-icon.btn-sm [class*="fa-"]::before {
+    font-size: 1.25em;
+}
+
 /* ---------- Forms / inputs ---------- */
 
 .form-control, .form-select, .form-check-input {
