@@ -135,9 +135,11 @@
 
 /* Tabler paints the selection with the primary color, which is near-white in dark mode, so
    light text vanishes when selected. Use a fixed, readable highlight instead. */
-::selection {
-    background-color: #3b82f6;
-    color: #fff;
+::selection,
+*::selection,
+body[data-bs-theme="dark"] [data-bs-theme="light"] ::selection {
+    background-color: #3b82f6 !important;
+    color: #fff !important;
 }
 
 /* ---------- Typography ---------- */
