@@ -186,6 +186,12 @@ body {
     box-shadow: 0 0 0 2px var(--sc-bg), 0 0 0 4px var(--sc-ring);
 }
 
+/* Buttons already center their icons (flex), so drop the text-alignment nudge applied to Lucide
+   glyphs elsewhere; otherwise the icon sits lower than the caret or label next to it. */
+.btn [class*="fa-"]::before {
+    top: 0;
+}
+
 /* ---------- Forms / inputs ---------- */
 
 .form-control, .form-select, .form-check-input {
@@ -250,6 +256,25 @@ body {
     letter-spacing: .03em;
     color: var(--sc-muted-fg);
     border-bottom-width: 1px;
+}
+
+/* Cards have rounded corners but the table's header and last-row backgrounds are square and poke
+   out of them. Round the outer cells to the card's inner radius. Kimai nests tables as
+   .card > .card-body > .dataTables_wrapper > table, other tables sit directly in the card. */
+.card {
+    --sc-card-inner-radius: calc(var(--tblr-border-radius-lg) - 1px);
+}
+:is(.card > .table, .card > :is(.card-body, .table-responsive):first-child .table) thead tr:first-child th:first-child {
+    border-top-left-radius: var(--sc-card-inner-radius);
+}
+:is(.card > .table, .card > :is(.card-body, .table-responsive):first-child .table) thead tr:first-child th:last-child {
+    border-top-right-radius: var(--sc-card-inner-radius);
+}
+:is(.card > .table:last-child, .card > :is(.card-body, .table-responsive):last-child .table) tbody tr:last-child > :first-child {
+    border-bottom-left-radius: var(--sc-card-inner-radius);
+}
+:is(.card > .table:last-child, .card > :is(.card-body, .table-responsive):last-child .table) tbody tr:last-child > :last-child {
+    border-bottom-right-radius: var(--sc-card-inner-radius);
 }
 
 /* ---------- Badges: flatter, less saturated than stock Tabler ---------- */
