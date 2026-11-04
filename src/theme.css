@@ -201,6 +201,15 @@ body {
     font-size: 1.25em;
 }
 
+/* The search field's trailing buttons (search, bookmark, clear) are small ghost buttons, so their
+   icons came out tiny and grey next to the filter button's. Match the filter icon's size and color. */
+.input-group-text .btn-sm [class*="fa-"]::before {
+    font-size: 1.45em;
+}
+.input-group-text .btn-ghost-secondary:not([class*="text-"]) {
+    color: var(--sc-fg);
+}
+
 /* ---------- Forms / inputs ---------- */
 
 .form-control, .form-select, .form-check-input {
@@ -284,6 +293,22 @@ body {
 }
 :is(.card > .table:last-child, .card > :is(.card-body, .table-responsive):last-child .table) tbody tr:last-child > :last-child {
     border-bottom-right-radius: var(--sc-card-inner-radius);
+}
+
+/* ---------- Pagination ---------- */
+
+/* The active page is filled with the primary color, which is near-white in dark mode, while Tabler
+   keeps its text white. Use the primary's own foreground color. */
+.pagination {
+    --tblr-pagination-active-color: var(--sc-primary-fg);
+    --tblr-pagination-active-bg: var(--sc-primary);
+    --tblr-pagination-active-border-color: var(--sc-primary);
+}
+.page-item.active .page-link,
+.page-link.active {
+    color: var(--sc-primary-fg);
+    background-color: var(--sc-primary);
+    border-color: var(--sc-primary);
 }
 
 /* ---------- Badges: flatter, less saturated than stock Tabler ---------- */
