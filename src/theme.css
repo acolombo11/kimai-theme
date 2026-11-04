@@ -311,6 +311,23 @@ body {
     border-color: var(--sc-primary);
 }
 
+/* ---------- Date picker ---------- */
+
+/* Selected start/end days are filled with the primary color (near-white in dark mode) while the
+   text stays white, or is the primary color itself when the day is also today. Use the primary's
+   foreground color for every filled day. */
+.litepicker {
+    --litepicker-is-start-color: var(--sc-primary-fg);
+    --litepicker-is-end-color: var(--sc-primary-fg);
+}
+.litepicker .container__days .day-item.is-start-date,
+.litepicker .container__days .day-item.is-end-date,
+.litepicker .container__days .day-item.is-start-date.is-today,
+.litepicker .container__days .day-item.is-end-date.is-today {
+    color: var(--sc-primary-fg);
+    background-color: var(--sc-primary);
+}
+
 /* ---------- Badges: flatter, less saturated than stock Tabler ---------- */
 
 .badge {
